@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>프로필 카드</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#111a2e;
+      --text:#e7eefc;
+      --muted:#9fb0d0;
+      --accent:#7c5cff;
+      --accent2:#2dd4ff;
+      --ring:rgba(124,92,255,.35);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      background: radial-gradient(1200px 600px at 20% 10%, rgba(124,92,255,.25), transparent 55%),
+                  radial-gradient(900px 500px at 80% 30%, rgba(45,212,255,.20), transparent 50%),
+                  var(--bg);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", Arial, sans-serif;
+      color:var(--text);
+      padding:24px;
+    }
+    .card{
+      width:min(420px, 100%);
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:18px;
+      padding:22px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(400px 160px at 30% 0%, rgba(124,92,255,.35), transparent 60%),
+                  radial-gradient(360px 140px at 80% 20%, rgba(45,212,255,.25), transparent 55%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .inner{ position:relative; z-index:1; }
+
+    .header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+    }
+    .avatar{
+      width:78px;
+      height:78px;
+      border-radius:16px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+      box-shadow: 0 0 0 6px rgba(124,92,255,.08);
+      flex:0 0 auto;
+    }
+    .avatar img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .name{
+      font-size:20px;
+      font-weight:800;
+      margin:0;
+      letter-spacing:-.02em;
+    }
+    .role{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-weight:600;
+      font-size:13px;
+    }
+
+    .bio{
+      margin:16px 0 0;
+      color:var(--text);
+      opacity:.95;
+      line-height:1.6;
+      font-size:14px;
+    }
+
+    .stats{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+    }
+    .stat{
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:14px;
+      padding:12px 10px;
+      text-align:center;
+    }
+    .stat .num{
+      font-weight:900;
+      font-size:16px;
+      margin:0;
+    }
+    .stat .label{
+      margin-top:6px;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:700;
+    }
+
+    .links{
+      margin-top:16px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .btn{
+      text-decoration:none;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      font-weight:800;
+      font-size:13px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: rgba(124,92,255,.45);
+      box-shadow: 0 0 0 6px var(--ring);
+    }
+    .chip{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display:inline-block;
+    }
+
+    .footer-note{
+      margin-top:14px;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.5;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <div class="inner">
+      <div class="header">
+        <div class="avatar">
+          <!-- 프로필 사진 넣고 싶으면 img 태그만 살리고 src를 바꾸세요. -->
+          <!-- <img src="avatar.jpg" alt="프로필 사진" /> -->
+          <div style="font-weight:900; opacity:.9;">IMG</div>
+        </div>
+
+        <div>
+          <p class="name">홍길동</p>
+          <p class="role">프론트엔드 개발자 / Frontend Engineer</p>
+        </div>
+      </div>
+
+      <p class="bio">
+        안녕하세요! 저는 사용자 경험을 중요하게 생각하는 프론트엔드 개발자입니다.
+        React/TypeScript로 깔끔하고 빠른 인터페이스를 만드는 걸 좋아해요.
+      </p>
+
+      <div class="stats">
+        <div class="stat">
+          <p class="num">5+</p>
+          <div class="label">프로젝트</div>
+        </div>
+        <div class="stat">
+          <p class="num">3년</p>
+          <div class="label">경력</div>
+        </div>
+        <div class="stat">
+          <p class="num">A+</p>
+          <div class="label">만족도</div>
+        </div>
+      </div>
+
+      <div class="links">
+        <a class="btn" href="https://github.com/" target="_blank" rel="noreferrer">
+          <span class="chip"></span>GitHub
+        </a>
+        <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+          <span class="chip"></span>LinkedIn
+        </a>
+        <a class="btn" href="mailto:example@email.com">
+          <span class="chip"></span>Email
+        </a>
+      </div>
+
+      <div class="footer-note">
+        팁: CSS/내용을 원하는 대로 바꾸고, 파일을 `profile-card.html`로 저장한 뒤 브라우저에서 열면 됩니다.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
